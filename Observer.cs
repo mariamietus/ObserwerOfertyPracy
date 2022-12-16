@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ObserwerOfertyPracy
 {
-    public class Observer:IObserver
+    public class Observer : IObserver
     {
         private string _observerName;
 
@@ -21,7 +21,10 @@ namespace ObserwerOfertyPracy
 
             Console.WriteLine("-------------");
             Console.WriteLine("Powiadomienie dla użytkownika: {0}", this._observerName);
-            Console.WriteLine("Nowa oferta pracy : {0} o następującym szczegółowym opisie", name, description);
+
+            Console.WriteLine($"Dodano nową ofertę pracy !\nStanowisko: {oferta.Name}, opis: {oferta.Description}");
+
+
         }
 
 

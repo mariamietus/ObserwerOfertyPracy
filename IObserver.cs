@@ -8,6 +8,6 @@ namespace ObserwerOfertyPracy
 {
     public interface IObserver
     {
-        void Update(OfertaPracy oferta);
+        void Update(OfertaPracy ofertaPracy);
     }
 }
