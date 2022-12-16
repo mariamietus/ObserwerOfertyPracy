@@ -1,26 +1,27 @@
 ﻿namespace ObserwerOfertyPracy
 {
-    public class Serwis : Subject
+    public class Serwis
     {
-        constructor()
+        public List<OfertaPracy> jobOfferList { get; set; } = new();
+        public List<IObserver> _observerList = new List<IObserver>();
+
+        public void Add(OfertaPracy ofertaPracy)
         {
-            // o zmianie tego stanu będziemy informować słuchaczy
-            this.newJobOffer = { };
-            // Subject wie o wszystkich obserwujących go obiektach
-            this.observers = [];
+            jobOfferList.Add(ofertaPracy);
+            ofertaPracy.Status = OfertaPracyStatus.New;
         }
 
 
-
-
-
-        protected override void Notify()
+        public void Attach(IObserver observer)
         {
-            foreach (IObserver observer in this._observerList)
-            {
-
-                observer.Update(this);
-            }
+            if (!this._observerList.Contains(observer))
+                this._observerList.Add(observer);
         }
+        public void Detach(IObserver observer)
+        {
+            if (this._observerList.Contains(observer))
+                this._observerList.Remove(observer);
+        }
+
     }
 }
